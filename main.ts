@@ -2,8 +2,11 @@
 // It packages the web application assets and generates a compliance dossier into the target directory.
 
 import { cpSync, mkdirSync, existsSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-game.ts';
+
+const here = fileURLToPath(new URL('.', import.meta.url));
 
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR || '/output';
 
@@ -15,9 +18,9 @@ mkdirSync(join(outputDir, 'game'), { recursive: true });
 mkdirSync(join(outputDir, 'screenshots'), { recursive: true });
 
 // Copy game/ and screenshots/
-cpSync(resolve('game'), join(outputDir, 'game'), { recursive: true });
-if (existsSync(resolve('screenshots'))) {
-  cpSync(resolve('screenshots'), join(outputDir, 'screenshots'), { recursive: true });
+cpSync(join(here, 'game'), join(outputDir, 'game'), { recursive: true });
+if (existsSync(join(here, 'screenshots'))) {
+  cpSync(join(here, 'screenshots'), join(outputDir, 'screenshots'), { recursive: true });
 }
 
 // Build dossier
