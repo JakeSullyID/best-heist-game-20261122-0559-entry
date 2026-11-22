@@ -1,0 +1,6 @@
+[
+  {"name": "cover.jpg", "query": "?shot=cover&seed=1"},
+  {"name": "nearmiss.jpg", "query": "?shot=nearmiss&seed=1"},
+  {"name": "alert.jpg", "query": "?shot=alert&seed=1"},
+  {"name": "win.jpg", "query": "?shot=win&seed=1"}
+]
